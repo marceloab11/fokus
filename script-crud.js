@@ -3,6 +3,7 @@ const formAddTarefa = document.querySelector('.app__form-add-task');
 const textArea = document.querySelector('.app__form-textarea');
 const ulTerefas = document.querySelector('.app__section-task-list')
 const tarefas =  JSON.parse(localStorage.getItem('tarefas')) || [];
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel')
 
 function  atualizarTarefas () {
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
@@ -66,4 +67,10 @@ formAddTarefa.addEventListener('submit', (event)=> {
 tarefas.forEach(tarefa => {
     const elementoTarefa = criarElementoTarefa(tarefa)
     ulTerefas.append(elementoTarefa)
+})
+
+btnCancelar.addEventListener('click', ()=> {
+    textArea.value = ""
+    formAddTarefa.classList.add('hidden')
+
 })
